@@ -33,8 +33,10 @@ class Juego():
             pass
         return None
 
-    def _turno(self, jugador):
+    def _turno(self, jugador, tiene_monedas = True, primer_turno = False):
         f"""Se le añaden {MONEDAS_TURNO} al jugador, se le muestran las opciones de compra hasta que decida finalizar el turno"""
+        if primer_turno:
+            jugador.monedas += 10
         print(f"Jugador: {jugador.nombre}")
         print(f"Puntos de vida: {jugador.puntos_vida}")
         print(f"Monedas: {jugador.monedas}")
@@ -49,22 +51,33 @@ class Juego():
     coste: 6 puntos_ataque: 8 puntos_vida: 10 """)
         options.append(f"""Comprar caballero: 
     coste: 9 puntos_ataque: 5 puntos_vida: 10 """)
+        if not tiene_monedas:
+            print("No dispones de suficiente dinero")
         x = self._elegir_opcion(options)
         match x:
             case 1:
                 quit()
-            case 2:
+            case 2:                
                 return
             case 3:
-                jugador.unidades.append(Soldado())
-                jugador.monedas -= jugador.unidades[len(jugador.unidades)-1].monedas
+                if (jugador.monedas - 5) >= 0:
+                    jugador.unidades.append(Soldado())
+                    jugador.monedas -= 5
+                else:
+                    tiene_monedas = False
             case 4:
-                jugador.unidades.append(Arquero())
-                jugador.monedas -= jugador.unidades[len(jugador.unidades)-1].monedas
+                if (jugador.monedas - 6) >= 0:
+                    jugador.unidades.append(Arquero())
+                    jugador.monedas -= 6
+                else:
+                    tiene_monedas = False
             case 5:
-                jugador.unidades.append(Caballero())
-                jugador.monedas -= jugador.unidades[len(jugador.unidades)-1].monedas
-        self._turno(jugador)
+                if (jugador.monedas - 9) >= 0:
+                    jugador.unidades.append(Caballero())
+                    jugador.monedas -= 9
+                else:
+                    tiene_monedas = False
+        self._turno(jugador, tiene_monedas = tiene_monedas)
 
     def _finalizar(self, jugador_ganador):
         """Finaliza la partida mostrando como ganador al jugador_ganador"""
@@ -88,9 +101,9 @@ El jugador ganador es {jugador_ganador.nombre}""")
         ronda = 0
         while(True):
             ronda += 1
-            self._turno(self.jugador1)
+            self._turno(self.jugador1, primer_turno= True)
             self._clear_screen()
-            self._turno(self.jugador2)
+            self._turno(self.jugador2, primer_turno= True)
             self._batalla()
 
             # limitación para permitir tests de funcionalidad sin implementación
@@ -142,11 +155,9 @@ El jugador ganador es {jugador_ganador.nombre}""")
             unis1 = len(self.jugador1.unidades)
             unis2 = len(self.jugador2.unidades)
         if unis1 == 0 and unis2 > 0:
-            for a in range(unis2):
-                self.jugador1.puntos_vida = self.jugador1.puntos_vida - self.jugador2.unidades[a].atacar()
+            self._daño_al_jugador(self.jugador1, self.jugador2)
         if unis2 == 0 and unis1 > 0:
-            for a in range(unis1):
-                self.jugador2.puntos_vida = self.jugador2.puntos_vida - self.jugador1.unidades[a].atacar()
+            self._daño_al_jugador(self.jugador2, self.jugador1)
         self.jugador1.descansar()
         self.jugador2.descansar()
                         

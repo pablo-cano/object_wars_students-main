@@ -185,7 +185,7 @@ class Test_funcionalidad():
     def test_comprar_soldado(self, monkeypatch):
         sol_file_path = 'test/test_comprar_soldado.out'
         test_path = 'test/test.out'
-        with open('test/test.out', 'w', encoding="utf-8") as file:
+        with open(test_path, 'w', encoding="utf-8") as file:
             sys.stdout = file
             Juego.mensaje_bienvenida()
             juego = Juego("Jugador1", "jugador2")
@@ -204,7 +204,7 @@ class Test_funcionalidad():
     def test_dinero_insuficiente(self, monkeypatch):
         sol_file_path = 'test/test_dinero_insuficiente.out'
         test_path = 'test/test.out'
-        with open('test/test.out', 'w') as file:
+        with open(test_path, 'w', encoding="utf-8") as file:
             sys.stdout = file
             Juego.mensaje_bienvenida()
             juego = Juego("Jugador1", "jugador2")
@@ -223,7 +223,7 @@ class Test_funcionalidad():
     def test_comprar_dos_soldados(self, monkeypatch):
         sol_file_path = 'test/test_comprar_dos_soldados.out'
         test_path = 'test/test.out'
-        with open(test_path, 'w') as file:
+        with open(test_path, 'w', encoding="utf-8") as file:
             sys.stdout = file
             Juego.mensaje_bienvenida()
             juego = Juego("Jugador1", "jugador2")
@@ -242,7 +242,7 @@ class Test_funcionalidad():
     def test_jugador_1_gana_partida(self, monkeypatch):
         sol_file_path = 'test/test_jugador_1_gana_partida.out'
         test_path = 'test/test.out'
-        with open(test_path, 'w') as file:
+        with open(test_path, 'w', encoding="utf-8") as file:
             sys.stdout = file
             Juego.mensaje_bienvenida()
             juego = Juego("Jugador1", "jugador2")
@@ -262,7 +262,7 @@ class Test_funcionalidad():
 
         sol_file_path = 'test/test_jugador_2_gana_partida.out'
         test_path = 'test/test.out'
-        with open(test_path, 'w') as file:
+        with open(test_path, 'w', encoding="utf-8") as file:
             sys.stdout = file
             Juego.mensaje_bienvenida()
             juego = Juego("Jugador1", "jugador2")
@@ -283,7 +283,7 @@ class Test_funcionalidad():
 
         sol_file_path = 'test/test_final.out'
         test_path = 'test/test.out'
-        with open(test_path, 'w') as file:
+        with open(test_path, 'w', encoding="utf-8") as file:
             sys.stdout = file
             Juego.mensaje_bienvenida()
             juego = Juego("Jugador1", "jugador2")
