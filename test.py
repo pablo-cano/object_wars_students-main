@@ -108,7 +108,7 @@ class Test_integracion():
         miJuego.jugador1.unidades.append(miSoldado)
         miJuego._daño_al_jugador(miJuego.jugador2, miJuego.jugador1)
         assert(N_VIDAS-miSoldado._puntos_ataque ==
-               miJuego.jugador2._puntos_vida)
+               miJuego.jugador2.puntos_vida)
 
     def test_finalizar_partida_jugador(self):
         miJuego = Juego("Jugador1", "Jugador2")
@@ -143,8 +143,6 @@ class Test_integracion():
         miJuego._batalla()
         assert(miJuego.jugador1.puntos_vida == 20)
         assert(miJuego.jugador2.puntos_vida == 17)
-        #assert(miJuego.jugador1.puntos_vida == 12)
-        #assert(miJuego.jugador2.puntos_vida == 20)
 
     def test_batalla_soldado_vs_2_soldados(self):
         miJuego = Juego("Jugador1", "Jugador2")
@@ -171,6 +169,7 @@ class Test_integracion():
         assert(miJuego.jugador1.puntos_vida == 20)
         assert(miJuego.jugador2.puntos_vida == 20)
 
+
 def check_same_output(path_orginial, path_test, create_output):
     """Devuelve true en caso de que los dos ficheros sean iguales, en caso de que create_output
     sea cierto copiar el output actual como el nuevo output a comparar, y hará fallar el test"""
@@ -180,12 +179,13 @@ def check_same_output(path_orginial, path_test, create_output):
     assert(filecmp.cmp(path_orginial,
                        path_test, shallow=False))
 
+
 class Test_funcionalidad():
 
     def test_comprar_soldado(self, monkeypatch):
         sol_file_path = 'test/test_comprar_soldado.out'
         test_path = 'test/test.out'
-        with open('test/test.out', 'w') as file:
+        with open('test/test.out', 'w', encoding="utf-8") as file:
             sys.stdout = file
             Juego.mensaje_bienvenida()
             juego = Juego("Jugador1", "jugador2")
@@ -201,7 +201,6 @@ class Test_funcionalidad():
         check_same_output(sol_file_path, test_path,
                           CREAR_OUTPUTS_FUNCIONALIDAD)
 
-'''
     def test_dinero_insuficiente(self, monkeypatch):
         sol_file_path = 'test/test_dinero_insuficiente.out'
         test_path = 'test/test.out'
@@ -313,5 +312,3 @@ class Test_usuario():
     def test_funcional_a_implementar(self):
         # Eliminar la siguiente linea
         assert(False)
-
-'''

@@ -44,6 +44,8 @@ class Soldado(Unidad):
         self.monedas = 5
         self._puntos_ataque = 3
         self.puntos_restaura = 5
+    def __str__(self):
+        return "soldado"
     def descansar(self):
         return super().descansar()
 
@@ -56,6 +58,8 @@ class Arquero(Unidad):
         self._puntos_ataque = 8
         self.puntos_restaura = 2
         self.recarga = True
+    def __str__(self):
+        return "arquero"
     def atacar(self):
         if self.recarga == False:
             self.recarga = not self.recarga
@@ -74,5 +78,7 @@ class Caballero(Unidad):
         self.monedas = 9
         self._puntos_ataque = 5
         self.puntos_restaura = 0
+    def __str__(self):
+        return "caballero"
     def descansar(self):
         return super().descansar()

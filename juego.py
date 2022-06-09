@@ -35,7 +35,36 @@ class Juego():
 
     def _turno(self, jugador):
         f"""Se le añaden {MONEDAS_TURNO} al jugador, se le muestran las opciones de compra hasta que decida finalizar el turno"""
-        pass
+        print(f"Jugador: {jugador.nombre}")
+        print(f"Puntos de vida: {jugador.puntos_vida}")
+        print(f"Monedas: {jugador.monedas}")
+        print(f"Unidades:")
+        for idy, element in enumerate(jugador.unidades):
+            print("{}. {}".format(idy+1, element))
+        print("")
+        options = [ "Terminar aplicación", "Finalizar turno" ]
+        options.append(f"""Comprar soldado: 
+    coste: 5 puntos_ataque: 3 puntos_vida: 10 """)                    
+        options.append(f"""Comprar arquero: 
+    coste: 6 puntos_ataque: 8 puntos_vida: 10 """)
+        options.append(f"""Comprar caballero: 
+    coste: 9 puntos_ataque: 5 puntos_vida: 10 """)
+        x = self._elegir_opcion(options)
+        match x:
+            case 1:
+                quit()
+            case 2:
+                return
+            case 3:
+                jugador.unidades.append(Soldado())
+                jugador.monedas -= jugador.unidades[len(jugador.unidades)-1].monedas
+            case 4:
+                jugador.unidades.append(Arquero())
+                jugador.monedas -= jugador.unidades[len(jugador.unidades)-1].monedas
+            case 5:
+                jugador.unidades.append(Caballero())
+                jugador.monedas -= jugador.unidades[len(jugador.unidades)-1].monedas
+        self._turno(jugador)
 
     def _finalizar(self, jugador_ganador):
         """Finaliza la partida mostrando como ganador al jugador_ganador"""

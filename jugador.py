@@ -9,7 +9,7 @@ class Jugador():
     def __init__(self, nombre, puntos_vida=20):
         self.nombre = nombre
         self._puntos_vida = puntos_vida
-        self.monedas = 0
+        self.monedas = 10
         self.unidades = []
 
     @property

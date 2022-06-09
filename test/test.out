@@ -8,11 +8,40 @@ Durante un turno el jugador puede comprar unidades.
 
 Al empejar un turno cada jugador recibe 10 mondedas.
 
-Despues de que ambos jugadores acaben sus turnos sus unidades entraran en combate. Si un jugador no tiene unidades, o son derrotadas, recibir� el da�o en sus puntos de vida.
+Despues de que ambos jugadores acaben sus turnos sus unidades entraran en combate. Si un jugador no tiene unidades, o son derrotadas, recibirá el daño en sus puntos de vida.
 
-Existen tres tipologias de unidades: soldados, arqueros y caballeros. Las unidades tienen un bonus de 1.5 de da�o siguiendo la siguiente jerarqu�a:
+Existen tres tipologias de unidades: soldados, arqueros y caballeros. Las unidades tienen un bonus de 1.5 de daño siguiendo la siguiente jerarquía:
 soldado -> arquero -> caballero -> soldado
 
 
     
     
+Jugador: Jugador1
+Puntos de vida: 20
+Monedas: 10
+Unidades:
+
+Elige una opción:
+1) Terminar aplicación
+2) Finalizar turno
+3) Comprar soldado: 
+    coste: 5 puntos_ataque: 3 puntos_vida: 10 
+4) Comprar arquero: 
+    coste: 6 puntos_ataque: 8 puntos_vida: 10 
+5) Comprar caballero: 
+    coste: 9 puntos_ataque: 5 puntos_vida: 10 
+Jugador: Jugador1
+Puntos de vida: 20
+Monedas: 5
+Unidades:
+1. soldado
+
+Elige una opción:
+1) Terminar aplicación
+2) Finalizar turno
+3) Comprar soldado: 
+    coste: 5 puntos_ataque: 3 puntos_vida: 10 
+4) Comprar arquero: 
+    coste: 6 puntos_ataque: 8 puntos_vida: 10 
+5) Comprar caballero: 
+    coste: 9 puntos_ataque: 5 puntos_vida: 10 
