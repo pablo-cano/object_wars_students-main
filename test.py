@@ -335,7 +335,7 @@ class Test_usuario():
         with open(test_path, 'w', encoding="utf-8") as file:
             sys.stdout = file
             Juego.mensaje_bienvenida()
-            juego = Juego("Jugador1", "jugador2")
+            juego = Juego("Gigante", "Elfo")
             # Entrada ficticia de los jugadores
             answers = iter([3, 2, 4, 2, 4, 2, 5, 2, 5, 3, 2, 3, 3, 2, 5, 2, 2, 2, 5, 2, 2, 1 ])
 
