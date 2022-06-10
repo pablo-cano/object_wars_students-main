@@ -14,9 +14,9 @@ class Juego():
     def __init__(self, nombre_jugador1,  nombre_jugador2):
         """Creadora"""
         self.jugador1 = Jugador(nombre=nombre_jugador1,
-                                puntos_vida=20)
+                                puntos_vida=N_VIDAS)
         self.jugador2 = Jugador(nombre=nombre_jugador2,
-                                puntos_vida=20)
+                                puntos_vida=N_VIDAS)
 
     @staticmethod
     def _elegir_opcion(options):
@@ -36,7 +36,7 @@ class Juego():
     def _turno(self, jugador, tiene_monedas = True, primer_turno = False):
         f"""Se le añaden {MONEDAS_TURNO} al jugador, se le muestran las opciones de compra hasta que decida finalizar el turno"""
         if primer_turno:
-            jugador.monedas += 10
+            jugador.monedas += MONEDAS_TURNO
         print(f"Jugador: {jugador.nombre}")
         print(f"Puntos de vida: {jugador.puntos_vida}")
         print(f"Monedas: {jugador.monedas}")
@@ -124,11 +124,11 @@ El jugador ganador es {jugador_ganador.nombre}""")
     def _calcular_bonus(atacante, defensor):
         # Devuelve el bonus de ataque que tiene el atacante contra el defensor, se debe usar la función isinstace(instancia, clase) para implementarla
         if isinstance(atacante, Soldado) and isinstance(defensor, Arquero):
-            return 1.5
+            return BONUS_DANO
         elif isinstance(atacante, Arquero) and isinstance(defensor, Caballero):
-            return 1.5
+            return BONUS_DANO
         elif isinstance(atacante, Caballero) and isinstance(defensor, Soldado):
-            return 1.5
+            return BONUS_DANO
         else:
             return 1
 
