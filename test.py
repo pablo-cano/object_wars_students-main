@@ -302,12 +302,32 @@ class Test_funcionalidad():
 
 class Test_usuario():
     def test_integracion_a_implementar(self):
-        # Eliminar la siguiente linea
-        assert(True)
+        # Se prueban clases que están realacionadas entre sí
+        miJuego = Juego("Player1", "Player2")
+        miJuego.jugador1.unidades.append(Caballero())
+        miJuego._batalla()
+        miJuego.jugador1.unidades.append(Soldado())
+        miJuego.jugador1.unidades.append(Soldado())
+        miJuego._batalla()
+        miJuego.jugador2.unidades.append(Caballero())
+        miJuego.jugador2.unidades.append(Soldado())
+        miJuego._batalla()
+        miJuego.jugador1.unidades.append(Arquero())
+        miJuego.jugador2.unidades.append(Soldado())
+        miJuego._batalla()
+        assert(miJuego.jugador1.puntos_vida == 20)
+        assert(miJuego.jugador2.puntos_vida == 1)
 
     def test_unitario_a_implementar(self):
-        # Eliminar la siguiente linea
-        assert(True)
+        # Se prueban clases independientes
+        mi_caballero = Caballero()
+        mi_caballero.puntos_vida -= 6
+        mi_caballero.descansar()
+        mi_arquero = Arquero()
+        mi_arquero.puntos_vida -= 4
+        mi_arquero.descansar()
+        assert(mi_caballero.puntos_vida == 4)
+        assert(mi_arquero.puntos_vida == 8)
 
     def test_funcional_a_implementar(self):
         # Eliminar la siguiente linea
