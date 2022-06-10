@@ -329,6 +329,21 @@ class Test_usuario():
         assert(mi_caballero.puntos_vida == 4)
         assert(mi_arquero.puntos_vida == 8)
 
-    def test_funcional_a_implementar(self):
-        # Eliminar la siguiente linea
-        assert(True)
+    def test_funcional_a_implementar(self, monkeypatch):
+        sol_file_path = 'test/test_usuario.out'
+        test_path = 'test/test.out'
+        with open(test_path, 'w', encoding="utf-8") as file:
+            sys.stdout = file
+            Juego.mensaje_bienvenida()
+            juego = Juego("Jugador1", "jugador2")
+            # Entrada ficticia de los jugadores
+            answers = iter([3, 2, 4, 2, 4, 2, 5, 2, 5, 3, 2, 3, 3, 2, 5, 2, 2, 2, 5, 2, 2, 1 ])
+
+            # using lambda statement for mocking
+            monkeypatch.setattr('builtins.input', lambda name: next(answers))
+            with pytest.raises(SystemExit) as e:
+                juego.loop()
+            assert e.type == SystemExit
+
+        check_same_output(sol_file_path, test_path,
+                          CREAR_OUTPUTS_FUNCIONALIDAD)
