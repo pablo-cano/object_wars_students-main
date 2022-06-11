@@ -330,6 +330,7 @@ class Test_usuario():
         assert(mi_arquero.puntos_vida == 8)
 
     def test_funcional_a_implementar(self, monkeypatch):
+        # Test funcional donde se prueba lo mismo que ve el usuario por pantalla
         sol_file_path = 'test/test_usuario.out'
         test_path = 'test/test.out'
         with open(test_path, 'w', encoding="utf-8") as file:
